@@ -1,5 +1,5 @@
 # koishi-plugin-qrcode
 
-[![npm](https://img.shields.io/npm/v/{{name}}?style=flat-square)](https://www.npmjs.com/package/{{name}})
+[![npm](https://img.shields.io/npm/v/koishi-plugin-qrcode?style=flat-square)](https://www.npmjs.com/package/koishi-plugin-qrcode)
 
-Generate QR Code in Koishi
+Generate QR Code in Koishi.
