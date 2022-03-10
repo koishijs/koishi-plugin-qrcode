@@ -7,15 +7,17 @@ export const name = 'QRCode'
 export const Config: Schema<Config> = Schema.object({})
 
 export function apply(ctx: Context) {
-  ctx.command('qrcode <text:text>', '生成二维码')
-    .option('margin', '-m <margin>  边界尺寸', { fallback: 4 })
-    .option('scale', '-s <scale>  比例系数', { fallback: 4 })
-    .option('width', '-w <width>  图片大小')
-    .option('dark', '-d <color>  暗部颜色')
-    .option('light', '-l <color>  亮部颜色')
-    .action(async ({ options }, text) => {
-      if (!text) return '请输入源文本。'
-      if (text.includes('[CQ:')) return '禁止输入纯文本以外的内容。'
+  ctx.i18n.define('zh', require('./locales/zh'))
+
+  ctx.command('qrcode <text:text>')
+    .option('margin', '-m <margin>', { fallback: 4 })
+    .option('scale', '-s <scale>', { fallback: 4 })
+    .option('width', '-w <width>')
+    .option('dark', '-d <color>')
+    .option('light', '-l <color>')
+    .action(async ({ options, session }, text) => {
+      if (!text) return session.text('.expect-text')
+      if (text.includes('[CQ:')) return session.text('.invalid-segment')
 
       const { margin, scale, width, dark, light } = options
       const dataURL = await toDataURL(text, { margin, scale, width, color: { dark, light } })

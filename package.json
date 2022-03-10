@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-qrcode",
   "description": "Generate QR Code in Koishi",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "files": [
@@ -26,10 +26,14 @@
     "koishi",
     "plugin",
     "qrcode",
-    "generate"
+    "generate",
+    "locale:zh"
   ],
   "peerDependencies": {
-    "koishi": "^4.2.0"
+    "koishi": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.4.2"
   },
   "dependencies": {
     "qrcode": "^1.5.0"
